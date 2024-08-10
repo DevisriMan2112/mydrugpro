@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast Results</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fffefe;
+            background-color: #ffffff;
+        }
+        /* Navbar Styling */
+        .navbar {
+            background-color: #1e5479 !important; /* Blue background */
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            color: white !important;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #ffffff !important;
+        }
+
+        .header-logo {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .navbar-nav .nav-item {
+            margin-left: 20px;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #4162f5;
+        }
+        /* Header Styling */
+        header {
+            color: #1e5479;
+            padding: 10px 0; /* Reduce padding to decrease space around the header */
+            text-align: center;
+            margin-bottom: 10px; /* Reduce margin-bottom to decrease space below the header */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container Margin Top */
+        .container > .mt-4 {
+            margin-top: 10px; /* Reduce margin if needed */
+        }
+
+
+        .btn-custom {
+            color: white;
+            background-color: #007bff; /* Button color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3; /* Darker shade for hover effect */
+        }
+        .btn-custom i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+        .container {
+            position: relative;
+            z-index: 1; /* Ensure content is above the video */
+            padding: 20px;
+        }
+        .pie-chart {
+            max-width: 100%; /* Ensures the image scales down to fit its container */
+            height: auto; /* Maintains the aspect ratio of the image */
+            display: block;
+        }
+        .result-text {
+            color: #030303;
+            text-align: left;
+        }
+        .highlight {
+            background-color: yellow; /* Highlight color */
+            color: black; /* Text color for better readability */
+            font-weight: bold; /* Optional: Make the highlighted text bold */
+        }
+        footer {
+            background-color: #1e5479;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo4.png' %}" alt="Drugpedia Logo" class="header-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_condition' %}">Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_rating' %}">Rating</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_sentiment' %}">Review Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'explore_drug' %}">Explore Drug</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'explore_condition' %}">Explore Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://public.tableau.com/views/CHTDashbord/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">View Analytics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Forecast Results</h1>
+    </header>
+    <div class="container">
+        {% if plot_url %}
+        <div class="mt-4">
+            <h3>Sales Forecast for "{{ drug_name }}":</h3>
+            <img src="data:image/png;base64,{{ plot_url }}" class="pie-chart" alt="Forecast Plot">
+        </div>
+        {% endif %}
+        {% if reviews %}
+        <div id="reviewsResult" class="result-text mt-4">
+            <h3>Reviews for "{{ drug_name }}" with sentiment:</h3>
+            <ul>
+                {% for review in reviews %}
+                    <li>
+                        <strong>Review {{ forloop.counter }}:</strong> {{ review.Review }} <br>
+                        <strong>Price:</strong> {{ review.Price }} <br>
+                        <strong>Sentiment:</strong> {{ review.Sentiment }}
+                    </li>
+                {% empty %}
+                    <li>No reviews found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if pie_chart %}
+        <div class="mt-4">
+            <h3>Sentiment Distribution for "{{ drug_name }}":</h3>
+            <img src="data:image/png;base64,{{ pie_chart }}" class="pie-chart" alt="Sentiment Distribution Pie Chart">
+            <ul>
+                {% for sentiment, count in distribution.items %}
+                    <li>{{ sentiment|capfirst }} Reviews: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <a href="/" class="btn-custom">
+            <i class="fas fa-home"></i> Back to home
+        </a>
+    </div>
+    <footer>
+        &copy; 2024 Your Company. All rights reserved.
+    </footer>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

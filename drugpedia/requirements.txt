@@ -1,0 +1,29 @@
+# Django framework
+Django
+
+# Machine Learning and NLP libraries
+tensorflow  # Or another version that is available
+keras
+transformers
+joblib
+numpy
+panda
+nltk
+
+# Visualization
+matplotlib
+seaborn
+
+# Reporting and PDF generation
+reportlab
+Pillow
+
+# Stopwords
+rake-nltk
+
+# Other dependencies
+scipy
+requests
+
+# Flask (if you're also running Flask for some components)
+scikit-learn

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Analysis Result</title>
+    <style>
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+        }
+        .btn-custom i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+    </style>
+</head>
+<body>
+    <h1>Review Analysis Result</h1>
+    <p><strong>Review:</strong> {{ review }}</p>
+    <p><strong>Predicted Rating:</strong> {{ rating }}</p>
+    <p><strong>Predicted Condition:</strong> {{ condition }}</p>
+    <p><strong>Predicted Sentiment:</strong> {{ sentiment }}</p>
+    <a href="{% url 'review_predict' %}">Analyze another review</a>
+    <a href="/" class="btn-custom">
+        <i class="fas fa-home"></i> Back to home
+    </a>
+</body>
+</html>

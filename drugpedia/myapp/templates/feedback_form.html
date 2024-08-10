@@ -1,0 +1,401 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #e0f2f1; /* Light Green */
+        }
+        header {
+            background: rgb(0, 0, 0, 0.5); /* Peacock Blue Gradient */
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: 5px solid #fc0404; /* Vibrant Red Border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .nav-link {
+            color: #fff !important;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: background 0.3s, color 0.3s;
+        }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: #394cc6 !important; /* Green on hover */
+        }
+        .showcase {
+            min-height: 200px;
+            /* background: url('{% static 'images/your-image.jpg' %}') no-repeat center center/cover; */
+            text-align: center;
+            color: #fff;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .showcase h1 {
+            font-size: 2em;
+            margin: 0;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            animation: slideIn 1s ease-out;
+        }
+        .showcase p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            animation: slideIn 1s ease-out 0.5s;
+        }
+        .btn-custom {
+            color: #fff;
+            background: rgb(0, 0, 0, 0.5); /* Peacock Blue */
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .btn-custom:hover {
+            background: #2f4b7c; /* Darker Blue on hover */
+            transform: scale(1.1);
+        }
+        footer {
+            background: rgb(0, 0, 0, 0.5); /* Peacock Blue */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 1em;
+            border-top: 5px solid #c63939; /* Vibrant Red Border */
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        /* Specific style for drug exploration results */
+        .result-text {
+            color: rgb(255, 255, 255); /* Black color for text */
+            text-align: left;
+        }
+        /* Map section */
+        #map-section {
+            padding: 60px 0;
+            background: #fff;
+            text-align: center;
+        }
+        #map {
+            height: 400px;
+        }
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            background: #ff1313;
+        }
+        .btn-custom i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure the video stays in the background */
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #66afe9;
+            outline: none;
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Feedback Form</h1>
+    </header>
+    <video class="video-background" autoplay muted loop>
+        <source src="{% static 'videos/bg_video.mp4' %}" type="video/mp4">
+    </video>
+    <div class="showcase">
+        <h1>Provide Your Feedback</h1><br><br>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="drugname">Drug Name:</label>
+                <input type="text" id="drugname" name="drugname" class="form-control" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <input type="text" id="condition" name="condition" class="form-control" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        </form>
+        <br><br>
+        <a href="/" class="btn-custom">
+            <i class="fas fa-home"></i> Back to home
+        </a>
+    </div>
+    <footer>
+        &copy; 2024 Your Company. All rights reserved.
+    </footer>
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            color: black;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #1e5479 !important; /* Blue background */
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            color: white !important;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #ffffff !important;
+        }
+
+        .header-logo {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .navbar-nav .nav-item {
+            margin-left: 20px;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #4162f5;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            text-align: center;
+            color: #1e5479;
+            padding: 100px 20px;
+        }
+
+        .showcase h1 {
+            font-size: 2em;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            color: #1e5479;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #1e5479;
+            outline: none;
+        }
+
+        .btn-custom {
+            color: white;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e5479;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 1em;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo4.png' %}" alt="Drugpedia Logo" class="header-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_condition' %}">Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_rating' %}">Rating</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'predict_sentiment' %}">Review Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'explore_drug' %}">Explore Drug</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'explore_condition' %}">Explore Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://public.tableau.com/views/CHTDashbord/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">View Analytics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="showcase">
+        <h1>Provide Your Feedback</h1>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="drugname">Drug Name:</label>
+                <input type="text" id="drugname" name="drugname" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <input type="text" id="condition" name="condition" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-custom">Submit Feedback</button>
+        </form>
+        <br><br>
+        <a href="/" class="btn-custom mt-3">
+            <i class="fas fa-home"></i> Back to home
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Your Company. All rights reserved.
+    </footer>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

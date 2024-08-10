@@ -1,0 +1,21 @@
+<!-- templates/reports/download_report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Drug Report</title>
+</head>
+<body>
+    <h1>Download Drug Report</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="drug_name">Drug Name:</label>
+        <input type="text" id="drug_name" name="drug_name" required>
+        <button type="submit">Download Report</button>
+    </form>
+    <footer>
+        &copy; 2024 Your Company. All rights reserved.
+    </footer>
+</body>
+</html>
